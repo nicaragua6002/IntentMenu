@@ -11,7 +11,7 @@ namespace IntentMenu
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        Button btn1, btn2, btn3, btn4;
+        Button btn1, btn2, btn3, btn4, btn5;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,11 +34,26 @@ namespace IntentMenu
             //Abrir el mapa
             btn4 = FindViewById<Button>(Resource.Id.button4);
             btn4.Click += Btn4_Click;
+
+            //Compartir
+            btn5 = FindViewById<Button>(Resource.Id.button5);
+            btn5.Click += Btn5_Click;
+        }
+
+        private void Btn5_Click(object sender, System.EventArgs e)
+        {
+            Intent i = new Intent(Intent.ActionSend);
+
+            i.SetType("text/plain");
+            i.PutExtra(Intent.ExtraSubject, "Titulo del mensaje");
+            i.PutExtra(Intent.ExtraText, "Datos o mensaje a compartir");
+
+            StartActivity(Intent.CreateChooser(i, "Compartir"));
         }
 
         private void Btn4_Click(object sender, System.EventArgs e)
         {
-            //Establecemos la laitu y la longitud del punto a mostrar
+            //Establecemos la latitud y la longitud del punto a mostrar
             string locate = "geo:12.1058595,-86.2729785";
             Intent i = new Intent(Intent.ActionView);
             i.SetData(Uri.Parse(locate));
