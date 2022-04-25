@@ -11,7 +11,7 @@ namespace IntentMenu
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        Button btn1, btn2;
+        Button btn1, btn2, btn3;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,6 +26,18 @@ namespace IntentMenu
             //Hacer llamada
             btn2 = FindViewById<Button>(Resource.Id.button2);
             btn2.Click += Btn2_Click;
+
+            //Abrir el navegador
+            btn3 = FindViewById<Button>(Resource.Id.button3);
+            btn3.Click += Btn3_Click;
+        }
+
+        private void Btn3_Click(object sender, System.EventArgs e)
+        {
+            string url = "http://www.google.com";
+            Intent i = new Intent(Intent.ActionView);
+            i.SetData(Uri.Parse(url));
+            StartActivity(i);
         }
 
         private void Btn2_Click(object sender, System.EventArgs e)
