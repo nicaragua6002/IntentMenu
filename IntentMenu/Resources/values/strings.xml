@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">IntentMenu</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="txtbtn1">Abrir segundo Activity</string>
+    <string name="txtbtn2">Hacer llamada</string>
+    <string name="txtbtn3">Abrir el navegador</string>
+    <string name="txtbtn4">Abrir el mapa</string>
+    <string name="txtbtn5">Compartir</string>
+
+    <string name="txt1">Este es el segundo Activity</string>
+</resources>
