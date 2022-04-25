@@ -11,7 +11,7 @@ namespace IntentMenu
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        Button btn1, btn2, btn3;
+        Button btn1, btn2, btn3, btn4;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,6 +30,19 @@ namespace IntentMenu
             //Abrir el navegador
             btn3 = FindViewById<Button>(Resource.Id.button3);
             btn3.Click += Btn3_Click;
+
+            //Abrir el mapa
+            btn4 = FindViewById<Button>(Resource.Id.button4);
+            btn4.Click += Btn4_Click;
+        }
+
+        private void Btn4_Click(object sender, System.EventArgs e)
+        {
+            //Establecemos la laitu y la longitud del punto a mostrar
+            string locate = "geo:12.1058595,-86.2729785";
+            Intent i = new Intent(Intent.ActionView);
+            i.SetData(Uri.Parse(locate));
+            StartActivity(i);
         }
 
         private void Btn3_Click(object sender, System.EventArgs e)
